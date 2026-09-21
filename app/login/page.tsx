@@ -20,7 +20,18 @@ export default function Login() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone, password }),
       });
-      const data = await res.json();
+      // API must return JSON — if it returns HTML (server crash), show a clear message
+      const text = await res.text();
+      let data: { error?: string; role?: string };
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(
+          res.status === 500
+            ? "عطل في السيرفر (خطأ 500) — غالباً متغيرات البيئة ناقصة على الاستضافة. راجع إعدادات Vercel."
+            : `استجابة غير متوقعة من السيرفر (${res.status}). حاول مجدداً.`,
+        );
+      }
       if (!res.ok) throw new Error(data.error ?? "تعذر الدخول.");
       setRole(data.role);
       const next = new URLSearchParams(window.location.search).get("next");
