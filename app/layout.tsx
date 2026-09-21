@@ -30,6 +30,7 @@ export default async function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <head>
+        <link rel="icon" type="image/webp" href="/logo.webp" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
