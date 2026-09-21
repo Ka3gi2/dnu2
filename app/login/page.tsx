@@ -33,7 +33,7 @@ export default function Login() {
         );
       }
       if (!res.ok) throw new Error(data.error ?? "تعذر الدخول.");
-      setRole(data.role);
+      setRole(data.role ?? null);
       const next = new URLSearchParams(window.location.search).get("next");
       window.location.href = next && next.startsWith("/") ? next : "/";
     } catch (err: unknown) {
