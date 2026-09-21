@@ -1,0 +1,21 @@
+# Secrets — NEVER commit (live Supabase keys inside)
+.env.local
+.env*.local
+
+# Next.js
+.next/
+out/
+*.log
+dev.log
+
+# Deps (reinstall with npm install)
+node_modules/
+**/node_modules/
+
+# WhatsApp session (private to the admin PC)
+**/auth/
+gateway/*.log
+
+# OS
+.DS_Store
+Thumbs.db
