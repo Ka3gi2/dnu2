@@ -12,8 +12,9 @@ dev.log
 node_modules/
 **/node_modules/
 
-# WhatsApp session (private to the admin PC)
-**/auth/
+# WhatsApp session (private to the admin PC) — gateway folder ONLY
+# (do NOT use **/auth/ — it would also ignore app/api/auth/ !)
+gateway/auth/
 gateway/*.log
 
 # OS
